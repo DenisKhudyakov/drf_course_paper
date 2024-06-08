@@ -1,15 +1,13 @@
 from django.db import models
 
-from users.models import User
-
-from config.settings import NULLABLE
+from config.settings import NULLABLE, AUTH_USER_MODEL
 
 
 class Habit(models.Model):
     """Класс модели привычки"""
 
     creator = models.ForeignKey(
-        User, on_delete=models.CASCADE, verbose_name="Создатель"
+        AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="Создатель"
     )
     place = models.CharField(
         max_length=50, verbose_name="Место", **NULLABLE

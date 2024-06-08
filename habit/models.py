@@ -2,7 +2,7 @@ from django.db import models
 
 from users.models import User
 
-NULLABLE = {"null": True, "blank": True}
+from config.settings import NULLABLE
 
 
 class Habit(models.Model):
@@ -27,7 +27,7 @@ class Habit(models.Model):
         "self",
         on_delete=models.CASCADE,
         verbose_name="Родительская привычка",
-        **NULLABLE,
+        **NULLABLE, related_name='related_to_habit',
     )  # Родительская привычка
     periodicity = models.IntegerField(
         default=1, verbose_name="Периодичность"
@@ -42,7 +42,7 @@ class Habit(models.Model):
 
     def __str__(self) -> str:
         """Строковое представление модели"""
-        return f"{self.creator} {self.place} {self.time} {self.action}"
+        return f"Я буду {self.action} в {self.time} в {self.place} "
 
     class Meta:
         verbose_name = "Привычка"

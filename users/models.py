@@ -5,7 +5,6 @@ from config.settings import NULLABLE
 
 class User(AbstractUser):
     """Класс модели пользователя"""
-
     phone = models.CharField(unique=True, max_length=11, **NULLABLE, verbose_name='Телефон')
     city = models.CharField(max_length=50, **NULLABLE, verbose_name='Город')
     avatar = models.ImageField(upload_to='avatars', **NULLABLE, verbose_name='Аватар') # Сохраняем в папку avatars
@@ -19,3 +18,5 @@ class User(AbstractUser):
     class Meta:
         verbose_name = 'Пользователь'
         verbose_name_plural = 'Пользователи'
+
+

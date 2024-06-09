@@ -22,4 +22,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("api_auth/", include("rest_framework.urls", namespace="rest_framework")),
     path("api/", include("habit.urls", namespace="habit")),
+    path("users/", include("users.urls", namespace="users")),
+
 ]

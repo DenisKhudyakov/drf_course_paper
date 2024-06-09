@@ -20,7 +20,7 @@ class RelatedHabitOrRewardValidator:
     """
 
     def __call__(self, habit):
-        if habit.reward and habit.related_habit:
+        if habit.get('reward') and habit.get('related_habit'):
             raise serializers.ValidationError(
                 "В модели не должно быть заполнено одновременно и поле вознаграждения,"
             )
@@ -30,7 +30,7 @@ class DurationValidator:
     """Время выполнения должно быть не больше 120 секунд"""
 
     def __call__(self, habit):
-        if habit.duration and habit.duration > 120:
+        if habit.get('duration') and habit.get('duration') > 120:
             raise serializers.ValidationError(
                 "Время выполнения должно быть не больше 120 секунд"
             )
@@ -40,17 +40,18 @@ class RelatedHabitIsPleasantValidator:
     """В связанные привычки могут попадать только привычки с признаком приятной привычки."""
 
     def __call__(self, habit):
-        if not habit.related_habit.is_pleasant:
-            raise serializers.ValidationError(
-                "В связанные привычки могут попадать только привычки с признаком приятной привычки."
-            )
+        if not habit.get('related_habit'):
+            if habit.get('is_pleasant'):
+                raise serializers.ValidationError(
+                    "В связанные привычки могут попадать только привычки с признаком приятной привычки."
+                )
 
 
 class PleasantHabitValidator:
     """У приятной привычки не может быть вознаграждения или связанной привычки"""
 
     def __call__(self, habit):
-        if habit.is_pleasant and (habit.related_habit or habit.reward):
+        if habit.get('is_pleasant') and (habit.get('related_habit') or habit.get('reward')):
             raise serializers.ValidationError(
                 "У приятной привычки не может быть вознаграждения или связанной привычки"
             )
@@ -60,11 +61,8 @@ class PeriodicityValidator:
     """Нельзя выполнять привычку реже, чем 1 раз в 7 дней."""
 
     def __call__(self, habit):
-        if habit.periodicity > 7:
-            raise serializers.ValidationError(
-                "Нельзя выполнять привычку реже, чем 1 раз в 7 дней."
-            )
-        if habit.periodicity < 1:
-            raise serializers.ValidationError(
-                "Нельзя выполнять привычку чаще, чем 1 раз в день."
-            )
+        periodicity = habit.get('periodicity')
+        if periodicity is None:
+            raise serializers.ValidationError("Периодичность привычки должна быть указана.")
+        if periodicity > 7 or periodicity < 1:
+            raise serializers.ValidationError("Нельзя выполнять привычку реже, чем 1 раз в 7 дней.")

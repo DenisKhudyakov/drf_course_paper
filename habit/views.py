@@ -1,10 +1,10 @@
 from rest_framework import generics
-from rest_framework.permissions import SAFE_METHODS, AllowAny, IsAuthenticated
+from rest_framework.permissions import SAFE_METHODS, IsAuthenticated
 
 from habit.models import Habit
+from habit.pagination import CustomPageNumberPagination
 from habit.permissions import IsOwner, IsPublic
 from habit.serializers import HabitSerializer
-from habit.pagination import CustomPageNumberPagination
 
 
 class HabitListCreateAPIView(generics.ListCreateAPIView):
@@ -16,10 +16,10 @@ class HabitListCreateAPIView(generics.ListCreateAPIView):
 
     def get_permissions(self):
         if self.request.method == "GET":
-            permission_classes = [IsPublic]
+            self.permission_classes = [IsPublic]
         elif self.request.method == "POST":
-            permission_classes = [IsAuthenticated]
-        return [permission() for permission in permission_classes]
+            self.permission_classes = [IsAuthenticated]
+        return [permission() for permission in self.permission_classes]
 
     def get(self, request, *args, **kwargs):
         queryset = Habit.objects.all()
@@ -36,7 +36,7 @@ class HabitRetriveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
 
     def get_permissions(self):
         if self.request.method in SAFE_METHODS:
-            permission_classes = [IsPublic | IsOwner]
+            self.permission_classes = [IsPublic | IsOwner]
         elif self.request.method in ("PUT", "PATCH", "DELETE"):
-            permission_classes = [IsAuthenticated | IsOwner]
-        return [permission() for permission in permission_classes]
+            self.permission_classes = [IsAuthenticated | IsOwner]
+        return [permission() for permission in self.permission_classes]

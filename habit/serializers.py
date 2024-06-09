@@ -33,21 +33,9 @@ class HabitSerializer(serializers.ModelSerializer):
         ]
 
     def validate(self, data):
-
-        habit = Habit(**data)
-
-        validators = [
-            RelatedHabitOrRewardValidator(),
-            DurationValidator(),
-            RelatedHabitIsPleasantValidator(),
-            PleasantHabitValidator(),
-            PeriodicityValidator(),
-        ]
-
-        for validator in validators:
-            try:
-                validator(habit)
-            except ValidationError as error:
-                raise serializers.ValidationError(error.message)
-
+        RelatedHabitOrRewardValidator()(data)
+        DurationValidator()(data)
+        RelatedHabitIsPleasantValidator()(data)
+        PleasantHabitValidator()(data)
+        PeriodicityValidator()(data)
         return data

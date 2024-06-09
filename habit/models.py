@@ -31,7 +31,7 @@ class Habit(models.Model):
     periodicity = models.IntegerField(
         default=1, verbose_name="Периодичность"
     )  # Периодичность привычки
-    reward = models.CharField(max_length=50, verbose_name="Бонус", **NULLABLE)  # Бонус
+    reward = models.CharField(max_length=50, verbose_name="Бонус", **NULLABLE)
     duration = models.DurationField(
         default=None, verbose_name="Продолжительность", **NULLABLE
     )  # Продолжительность привычки

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # setting_app
     "rest_framework",
     "rest_framework_simplejwt",
+    "corsheaders",
     # my_apps
     "habit",
     "users",
@@ -59,6 +60,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -154,4 +156,13 @@ SIMPLE_JWT = {
 }
 AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "https://read-only.example.com",
+    "https://read-and-write.example.com",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://read-and-write.example.com",
 ]

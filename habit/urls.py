@@ -12,6 +12,6 @@ urlpatterns = [
     path(
         "habits/<int:pk>/",
         HabitRetriveUpdateDestroyAPIView.as_view(),
-        name="habit-retrive-update-destroy",
+        name="habit-retrieve-update-destroy",
     ),
 ]

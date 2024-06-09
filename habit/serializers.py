@@ -11,11 +11,6 @@ from users.models import User
 
 class HabitSerializer(serializers.ModelSerializer):
     """Класс сериализатор для Habit"""
-
-    creator = serializers.SlugRelatedField(
-        slug_field="email", queryset=User.objects.all()
-    )
-
     class Meta:
         model = Habit
         fields = [

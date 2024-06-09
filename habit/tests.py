@@ -13,8 +13,8 @@ class HabitAPITestCase(APITestCase):
             place="Gym",
             time="07:00:00",
             action="Workout",
-            is_pleasant=True,
-            periodicity=1,
+            is_pleasant=False,
+            periodicity=2,
             duration="00:30:00",
             is_public=True
         )
@@ -30,8 +30,11 @@ class HabitAPITestCase(APITestCase):
             "creator": self.user.id,
             "time": "06:00:00",
             "action": "Jogging",
+            "periodicity": 2
         }
         response = self.client.post('/api/habits/', data=data, format='json')
+        if response.status_code != status.HTTP_201_CREATED:
+            print(response.data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
     def test_create_habit_missing_fields(self):
@@ -53,9 +56,12 @@ class HabitAPITestCase(APITestCase):
         url = f'/api/habits/{self.habit.id}/'
         data = {
             "place": "Home",
-            "action": "Yoga"
+            "action": "Yoga",
+            "periodicity": 2
         }
         response = self.client.patch(url, data, format='json')
+        if response.status_code != status.HTTP_200_OK:
+            print(response.data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.habit.refresh_from_db()
         self.assertEqual(self.habit.place, "Home")

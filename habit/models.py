@@ -1,6 +1,6 @@
 from django.db import models
 
-from config.settings import NULLABLE, AUTH_USER_MODEL
+from config.settings import AUTH_USER_MODEL, NULLABLE
 
 
 class Habit(models.Model):
@@ -25,7 +25,8 @@ class Habit(models.Model):
         "self",
         on_delete=models.CASCADE,
         verbose_name="Родительская привычка",
-        **NULLABLE, related_name='related_to_habit',
+        **NULLABLE,
+        related_name="related_to_habit",
     )  # Родительская привычка
     periodicity = models.IntegerField(
         default=1, verbose_name="Периодичность"

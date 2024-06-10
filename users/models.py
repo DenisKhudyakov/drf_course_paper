@@ -17,7 +17,9 @@ class User(AbstractUser):
 
     username = None
     email = models.EmailField(unique=True, verbose_name="Email")
-    telegram_id = models.CharField(max_length=50, verbose_name="Telegram_char_id", **NULLABLE)
+    telegram_id = models.CharField(
+        max_length=50, verbose_name="Telegram_char_id", **NULLABLE
+    )
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []

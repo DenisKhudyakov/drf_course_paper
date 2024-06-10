@@ -1,4 +1,3 @@
-from django.core.exceptions import ValidationError
 from rest_framework import serializers
 
 from habit.models import Habit
@@ -6,11 +5,11 @@ from habit.validators import (DurationValidator, PeriodicityValidator,
                               PleasantHabitValidator,
                               RelatedHabitIsPleasantValidator,
                               RelatedHabitOrRewardValidator)
-from users.models import User
 
 
 class HabitSerializer(serializers.ModelSerializer):
     """Класс сериализатор для Habit"""
+
     class Meta:
         model = Habit
         fields = [

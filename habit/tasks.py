@@ -1,12 +1,13 @@
 from celery import shared_task
-from django.utils import timezone
-from habit.models import Habit
 from django.conf import settings
+from django.utils import timezone
 from telegram import Bot
+
+from habit.models import Habit
 
 
 @shared_task
-def my_task():
+def send_habit_reminder():
     now = timezone.now()
     habits = Habit.objects.fillter(time=now.time())
     bot = Bot(token=settings.TELEGRAM_TOKEN)

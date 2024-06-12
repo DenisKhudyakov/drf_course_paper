@@ -8,7 +8,8 @@ from users.views import UserListCreateView, UserRetrieveUpdateDestroyView
 app_name = UsersConfig.name
 
 urlpatterns = [
-    path("list_create/", UserListCreateView.as_view(), name="user-list-create"),
+    path("users/", UserListCreateView.as_view(), name="users"),
+    path("user_create/", UserListCreateView.as_view(), name="user-create"),
     path(
         "update_delete_retrive/<int:pk>/",
         UserRetrieveUpdateDestroyView.as_view(),

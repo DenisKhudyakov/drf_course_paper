@@ -1,0 +1,92 @@
+[
+    {
+        "model": "users.user",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$216000$U8N5D2GRQsH4$PbZW57EyZ7LSYXBv6z5O7KH2uZJZDo4fSx/uQxU4fS4=",
+            "last_login": null,
+            "is_superuser": false,
+            "first_name": "John",
+            "last_name": "Doe",
+            "email": "john@example.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-01-01T00:00:00Z",
+            "phone": "12345678901",
+            "city": "New York",
+            "avatar": ""
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 2,
+        "fields": {
+            "password": "pbkdf2_sha256$216000$U8N5D2GRQsH4$PbZW57EyZ7LSYXBv6z5O7KH2uZJZDo4fSx/uQxU4fS4=",
+            "last_login": null,
+            "is_superuser": false,
+            "first_name": "Jane",
+            "last_name": "Doe",
+            "email": "jane@example.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-01-01T00:00:00Z",
+            "phone": "12345678902",
+            "city": "Los Angeles",
+            "avatar": ""
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 3,
+        "fields": {
+            "password": "pbkdf2_sha256$216000$U8N5D2GRQsH4$PbZW57EyZ7LSYXBv6z5O7KH2uZJZDo4fSx/uQxU4fS4=",
+            "last_login": null,
+            "is_superuser": false,
+            "first_name": "Alice",
+            "last_name": "Smith",
+            "email": "alice@example.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-01-01T00:00:00Z",
+            "phone": "12345678903",
+            "city": "Chicago",
+            "avatar": ""
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 4,
+        "fields": {
+            "password": "pbkdf2_sha256$216000$U8N5D2GRQsH4$PbZW57EyZ7LSYXBv6z5O7KH2uZJZDo4fSx/uQxU4fS4=",
+            "last_login": null,
+            "is_superuser": false,
+            "first_name": "Bob",
+            "last_name": "Johnson",
+            "email": "bob@example.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-01-01T00:00:00Z",
+            "phone": "12345678904",
+            "city": "Houston",
+            "avatar": ""
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 5,
+        "fields": {
+            "password": "pbkdf2_sha256$216000$U8N5D2GRQsH4$PbZW57EyZ7LSYXBv6z5O7KH2uZJZDo4fSx/uQxU4fS4=",
+            "last_login": null,
+            "is_superuser": false,
+            "first_name": "Charlie",
+            "last_name": "Brown",
+            "email": "charlie@example.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-01-01T00:00:00Z",
+            "phone": "12345678905",
+            "city": "Phoenix",
+            "avatar": ""
+        }
+    }
+]

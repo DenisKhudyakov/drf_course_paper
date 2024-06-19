@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: example
+      PGDATA: /var/lib/postgresql/data/pgdata
+
+  redis:
+    image: redis:latest
+
+  app:
+    build: .
+    command:  python manage.py runserver 0.0.0.0:8000
+    ports:
+        - '8000:8000'
+    depends_on:
+      - db
+      - redis
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+
+  celery:
+    build: .
+    command: celery -A config worker --loglevel=info
+    depends_on:
+      - db
+      - redis
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0

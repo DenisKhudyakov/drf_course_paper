@@ -89,14 +89,26 @@ WSGI_APPLICATION = "config.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql_psycopg2",
+#         "NAME": os.getenv("DB_NAME"),
+#         "USER": os.getenv("DB_USER"),
+#         "PASSWORD": os.getenv("DB_PASSWORD"),
+#     }
+# }
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": os.getenv("DB_NAME"),
-        "USER": os.getenv("DB_USER"),
-        "PASSWORD": os.getenv("DB_PASSWORD"),
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'example',
+        'HOST': 'db',
+        'PORT': '5432',
     }
 }
+
 
 
 # Password validation
@@ -177,10 +189,14 @@ CACHES = {
 }
 
 # URL-адрес брокера сообщений
-CELERY_BROKER_URL = "redis://localhost:6379"  # Например, Redis, который по умолчанию работает на порту 6379
+CELERY_BROKER_URL = 'redis://redis:6379/0'  # Например, Redis, который по умолчанию работает на порту 6379
 
 # URL-адрес брокера результатов, также Redis
-CELERY_RESULT_BACKEND = "redis://localhost:6379"
+CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
+
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
 
 # Часовой пояс для работы Celery
 CELERY_TIMEZONE = TIME_ZONE

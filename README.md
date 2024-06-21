@@ -12,6 +12,7 @@
 ![Poetry](https://img.shields.io/badge/Poetry-%233B82F6.svg?style=for-the-badge&logo=poetry&logoColor=0B3D8D)
 ![PyCharm](https://img.shields.io/badge/pycharm-143?style=for-the-badge&logo=pycharm&logoColor=black&color=black&labelColor=green)
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 
 <h3>Контекст</h3>
 <p>В 2018 году Джеймс Клир написал книгу «Атомные привычки», которая посвящена приобретению новых полезных привычек и искоренению старых плохих привычек. Заказчик прочитал книгу, впечатлился и обратился к вам с запросом реализовать трекер полезных привычек.</p>
@@ -20,9 +21,6 @@
 	Установка и запуск:
 		1) Установите Python и Poetry если они не установлены.
 		2) Клонируйте репозиторий git clone https://github.com/DenisKhudyakov/drf_course_paper
-		3) Активируйте виртульное окружение poetry shell
-		4) Установите пакеты poetry install
-		5) Запустите сервер python manage.py runserver
-		6) Смотрите документацию к API swagger/ или redoc/ добавив это к базовому URL
-		7)  
+		3) Установаите Docker и Docker Desktop
+        4) Запустите в директории проекта команду docker compose up
 		

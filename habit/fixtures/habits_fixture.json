@@ -1,0 +1,146 @@
+[
+    {
+        "model": "habit.habit",
+        "pk": 1,
+        "fields": {
+            "creator": 1,
+            "place": "Gym",
+            "time": "06:00:00",
+            "action": "Morning workout",
+            "is_pleasant": false,
+            "related_habit": null,
+            "periodicity": 1,
+            "reward": "Protein shake",
+            "duration": "01:00:00",
+            "is_public": true
+        }
+    },
+    {
+        "model": "habit.habit",
+        "pk": 2,
+        "fields": {
+            "creator": 2,
+            "place": "Office",
+            "time": "09:00:00",
+            "action": "Check emails",
+            "is_pleasant": false,
+            "related_habit": null,
+            "periodicity": 1,
+            "reward": "Coffee break",
+            "duration": "00:30:00",
+            "is_public": true
+        }
+    },
+    {
+        "model": "habit.habit",
+        "pk": 3,
+        "fields": {
+            "creator": 3,
+            "place": "Park",
+            "time": "07:00:00",
+            "action": "Jogging",
+            "is_pleasant": true,
+            "related_habit": null,
+            "periodicity": 1,
+            "reward": "Smoothie",
+            "duration": "00:45:00",
+            "is_public": true
+        }
+    },
+    {
+        "model": "habit.habit",
+        "pk": 4,
+        "fields": {
+            "creator": 4,
+            "place": "Home",
+            "time": "18:00:00",
+            "action": "Read a book",
+            "is_pleasant": true,
+            "related_habit": null,
+            "periodicity": 1,
+            "reward": "Snack",
+            "duration": "01:00:00",
+            "is_public": true
+        }
+    },
+    {
+        "model": "habit.habit",
+        "pk": 5,
+        "fields": {
+            "creator": 5,
+            "place": "Library",
+            "time": "15:00:00",
+            "action": "Study",
+            "is_pleasant": false,
+            "related_habit": null,
+            "periodicity": 1,
+            "reward": "Take a walk",
+            "duration": "02:00:00",
+            "is_public": true
+        }
+    },
+    {
+        "model": "habit.habit",
+        "pk": 6,
+        "fields": {
+            "creator": 1,
+            "place": "Kitchen",
+            "time": "07:30:00",
+            "action": "Cook breakfast",
+            "is_pleasant": true,
+            "related_habit": null,
+            "periodicity": 1,
+            "reward": "Eat breakfast",
+            "duration": "00:30:00",
+            "is_public": true
+        }
+    },
+    {
+        "model": "habit.habit",
+        "pk": 7,
+        "fields": {
+            "creator": 2,
+            "place": "Living Room",
+            "time": "20:00:00",
+            "action": "Meditate",
+            "is_pleasant": true,
+            "related_habit": null,
+            "periodicity": 1,
+            "reward": "Relax",
+            "duration": "00:15:00",
+            "is_public": true
+        }
+    },
+    {
+        "model": "habit.habit",
+        "pk": 8,
+        "fields": {
+            "creator": 3,
+            "place": "Gym",
+            "time": "18:30:00",
+            "action": "Evening workout",
+            "is_pleasant": false,
+            "related_habit": 1,
+            "periodicity": 1,
+            "reward": "Shower",
+            "duration": "01:30:00",
+            "is_public": true
+        }
+    },
+    {
+        "model": "habit.habit",
+        "pk": 9,
+        "fields": {
+            "creator": 4,
+            "place": "Cafe",
+            "time": "17:00:00",
+            "action": "Meet friends",
+            "is_pleasant": true,
+            "related_habit": null,
+            "periodicity": 1,
+            "reward": "Socialize",
+            "duration": "02:00:00",
+            "is_public": true
+        }
+    }
+]

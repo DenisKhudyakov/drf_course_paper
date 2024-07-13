@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: example
+      PGDATA: /var/lib/postgresql/data/pgdata
+    healthcheck:
+      test: ['CMD', 'pg_isready', '-U', 'postgres']
+      interval: 30s
+      timeout:  10s
+      retries: 5
+
+  redis:
+    image: redis:latest
+
+
+  app:
+    build: .
+    command: >
+      sh -C "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    ports:
+        - '8000:8000'
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+
+  celery:
+    build: .
+    command: celery -A config worker --loglevel=info
+    depends_on:
+      - db
+      - redis
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+
+  celery-beat:
+    build: .
+    command: celery  -A config beat  --loglevel=info
+    depends_on:
+      - db
+      - redis
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
